@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import "./App.css";
 import List from "./components/list";
 import ListItem from "./components/listItem";
@@ -18,18 +18,26 @@ const ivysaur = {
   id: "002",
   link: "#ivysaur",
 };
-const pokemons = [bulbasaur, ivysaur];
+
+const allPokemons = [bulbasaur, ivysaur];
 
 
 
-const listItems = pokemons.map((pokemon) =>
+
+function App() {
+  const [pokemons, setPokemons] = React.useState([]);
+  const listItems = pokemons.map((pokemon) =>
   <ListItem key={pokemon.id} href={pokemon.link}> 
   <ListItemIcon src={pokemon.imgSrc} alt={`Picture of +{pokemon.name}`} />
       <ListItemText primary={pokemon.name} secondary={pokemon.id} />
   </ListItem>
 );
 
-function App() {
+
+function handleClick(){
+ setPokemons(allPokemons);
+  
+}
   return (
     <div className="app">
       <header className="app__header">
@@ -39,12 +47,17 @@ function App() {
           type="text"
           placeholder="Search"
         />
+        <button onClick={() => handleClick()}>
+        Click me
+      </button>
       </header>
       <main className="pokedex__main">
-        <List>
-          {listItems}
-        </List>
-      </main>
+  <List>
+
+    {listItems}
+  </List>
+</main>
+      
       <footer className="app__footer">Navigation</footer>
     </div>
   );
