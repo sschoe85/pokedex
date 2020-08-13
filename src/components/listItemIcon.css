@@ -1,0 +1,7 @@
+.pokedex__img {
+  margin: auto 15px;
+  width: 2.2em;
+  height: 2.2em;
+  object-fit: contain;
+  
+}
