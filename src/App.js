@@ -4,29 +4,13 @@ import List from "./components/list";
 import ListItem from "./components/listItem";
 import ListItemIcon from "./components/listItemIcon";
 import ListItemText from "./components/listItemText";
-import BulbasaurSrc from "./assets/bulbasaur.png";
-
-const bulbasaur = {
-  name: "Bulbasaur",
-  imgSrc: "https://img.pokemondb.net/artwork/large/bulbasaur.jpg",
-  id: "001",
-  link: "#bulbasaur",
-};
-const ivysaur = {
-  name: "Ivysaur",
-  imgSrc: "https://img.pokemondb.net/artwork/large/ivysaur.jpg",
-  id: "002",
-  link: "#ivysaur",
-};
-
-const allPokemons = [bulbasaur, ivysaur];
-
+import { fetchPokemons } from "./api/fetchPokemons";
 
 
 
 function App() {
   const [pokemons, setPokemons] = React.useState([]);
-  const listItems = pokemons.map((pokemon) =>
+  const listItems = pokemons?.map((pokemon) =>
   <ListItem key={pokemon.id} href={pokemon.link}> 
   <ListItemIcon src={pokemon.imgSrc} alt={`Picture of +{pokemon.name}`} />
       <ListItemText primary={pokemon.name} secondary={pokemon.id} />
@@ -34,8 +18,8 @@ function App() {
 );
 
 
-function handleClick(){
- setPokemons(allPokemons);
+async function handleClick(){
+setPokemons(await fetchPokemons());
   
 }
   return (
