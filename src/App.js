@@ -23,7 +23,6 @@ function waitFor(time) {
 
 useEffect(() => {
   async function fetchData() {
-    await waitFor(2000);
     const allPokemons = await fetchPokemons();
     setPokemons(allPokemons);
     setLoading(false);
