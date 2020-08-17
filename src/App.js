@@ -1,13 +1,13 @@
 import React, { useEffect } from "react";
 import "./App.css";
 import List from "./components/list";
-import ListItem from "./components/listItem";
+import ListItem from "./components/ListItem";
 import ListItemIcon from "./components/listItemIcon";
 import ListItemText from "./components/listItemText";
 import { fetchPokemons } from "./api/fetchPokemons";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import Items from "./pages/items";
-import Pokemons from "./pages/pokemons";
+import Pokemon from "./pages/Pokemon";
+
 
 function App() {
   const [loading, setLoading] = React.useState(true);
@@ -18,9 +18,7 @@ function App() {
       <ListItemText primary={pokemon.name} secondary={pokemon.id} />
     </ListItem>
   ));
-  function waitFor(time) {
-    return new Promise((resolve) => setTimeout(resolve, time));
-  }
+ 
 
   useEffect(() => {
     async function fetchData() {
@@ -51,7 +49,9 @@ function App() {
         </Route>
         </Switch>
         <Switch>
-          <Route path ="/pokemon"></Route>
+          <Route path ="/pokemon/:name">
+            <Pokemon/>
+          </Route>
         </Switch>
 
         <footer className="app__footer">
