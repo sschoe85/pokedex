@@ -1,6 +1,7 @@
 export async function fetchPokemons() {
     const response = await fetch(
       "https://unpkg.com/pokemons@1.1.0/pokemons.json"
+
     );
     if (!response.ok) {
       throw new Error(response);
