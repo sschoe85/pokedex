@@ -7,7 +7,7 @@ import ListItemText from "./components/listItemText";
 import { fetchPokemons } from "./api/fetchPokemons";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Items from "./pages/items";
-import Pokemons from ".pages/pokemons";
+import Pokemons from "./pages/pokemons";
 
 function App() {
   const [loading, setLoading] = React.useState(true);
