@@ -13,7 +13,7 @@ function App() {
   const [loading, setLoading] = React.useState(true);
   const [pokemons, setPokemons] = React.useState([]);
   const listItems = pokemons?.map((pokemon) => (
-    <ListItem key={pokemon.id} href={pokemon.link}>
+    <ListItem key={pokemon.id} href={`pokemon/${pokemon.name.toLowerCase()}`}>
       <ListItemIcon src={pokemon.imgSrc} alt={`Picture of +{pokemon.name}`} />
       <ListItemText primary={pokemon.name} secondary={pokemon.id} />
     </ListItem>
